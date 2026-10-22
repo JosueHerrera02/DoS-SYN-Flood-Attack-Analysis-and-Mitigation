@@ -32,10 +32,12 @@ The objective of this project is to investigate and analyze a Denial of Service 
 You can have access to the tcpdump log <a href="https://www.dropbox.com/scl/fi/8zzljfyzlbp4uu07nd3pk/tcpdump_log.xlsx?rlkey=3k22nosqhxf3u7z95wpohu96u&st=6xqi6lfj&dl=0">here</a>
 - 2. Analyzed network log data to identify suspicious traffic patterns.
 - 3. Examined TCP traffic and observed a high volume of SYN packets from a single source IP address (203.0.113.0).
+Note: if you have not downloaded the tcpdump file, here is a <a href="//imgur.com/a/Dx7UQcU">screenshot</a>
 - 4. Verified that the traffic targeted a single destination server (192.0.2.1) within a very short time frame.
-- 5. Determined that the activity matched the characteristics of a DoS SYN Flood attack.
-- 6. Investigated how the attack exploited the TCP three-way handshake process to overwhelm server resources.
-- 7. Assessed the impact on website availability and user connectivity.
-- 8. Documented findings, indicators of compromise (IoCs), and attack behavior.
+- 5. Determined that the activity matched the characteristics of a DoS SYN Flood attack. The Source IP address (203.0.113.0) was sending thousands of SYN requests to the Destination IP address (192.0.2.1) which in this case is the server.
+- 6. Investigated how the attack exploited the TCP three-way handshake process to overwhelm server resources. 1. SYN — Client → Server (The client sends a SYN (synchronize) packet to the server to request a connection and propose an initial sequence number). 2. SYN‑ACK — Server → Client (The server responds with SYN‑ACK, acknowledging the client’s SYN and sending its
+own SYN back to establish its sequence number). 3.ACK — Client → Server (The client sends a final ACK (acknowledgment) to confirm the server’s SYN‑ACK. At this point, the connection is fully established and data transfer can begin).
+- 7. Assessed the impact on website availability and user connectivity. The users had no access to the website
+- 8. Documented findings, indicators of compromise (IoCs), and attack behavior. You can have access to such incident report <a href="//imgur.com/a/yVkr3u1">here</a>
 - 9. Researched mitigation strategies, including firewall rules to block malicious IP addresses and reduce the risk of similar attacks.
 - 10. Produced an incident report summarizing the analysis, findings, and recommended remediation measures
