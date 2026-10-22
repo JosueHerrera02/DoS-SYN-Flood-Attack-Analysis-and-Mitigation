@@ -40,4 +40,35 @@ own SYN back to establish its sequence number). 3.ACK — Client → Server (The
 - 7. Assessed the impact on website availability and user connectivity. The users had no access to the website
 - 8. Documented findings, indicators of compromise (IoCs), and attack behavior. You can have access to such incident report <a href="//imgur.com/a/yVkr3u1">here</a>
 - 9. Researched mitigation strategies, including firewall rules to block malicious IP addresses and reduce the risk of similar attacks.
-- 10. Produced an incident report summarizing the analysis, findings, and recommended remediation measures
+To mitigate the SYN Flood attack, a firewall rule was configured to block traffic originating from the malicious source IP address.
+### Firewall Mitigation (Blocking the Malicious IP)
+
+```bash
+sudo iptables -A INPUT -s 203.0.113.0 -j DROP
+sudo iptables -L -n
+```
+
+### UFW Alternative
+
+```bash
+sudo ufw deny from 203.0.113.0
+sudo ufw status numbered
+```
+### Firewall Configuration
+A new general firewall configuration was established:
+1. Opened Windows Defender Firewall with Advanced Security.
+2. Selected Inbound Rules.
+3. Clicked New Rule.
+4. Chose Custom.
+5. Selected All Programs.
+6. Leaved Protocol and Ports as default.
+7. Under Scope, added the remote IP address:
+203.0.113.0
+8. Selected Block the Connection.
+9. Applied to Domain, Private, and Public profiles.
+10. Named the rule:
+Block SYN Flood Source IP
+You can visualize the step-by-step process <a href="//imgur.com/a/xWqAQHG">here</a>
+
+### Additional Information
+While blocking the malicious IP address helps contain the incident, further investigation is necessary to determine whether the attack involved IP spoofing or distributed attack sources. Continuous monitoring and additional defensive measures should be implemented to ensure the effectiveness of the mitigation strategy.
