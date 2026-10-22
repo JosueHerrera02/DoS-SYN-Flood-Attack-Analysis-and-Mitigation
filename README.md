@@ -29,6 +29,7 @@ The objective of this project is to investigate and analyze a Denial of Service 
 
 ## Steps
 - 1. Reviewed the incident report and identified the service disruption affecting the web server.
+You can have access to the tcpdump log <a href="https://www.dropbox.com/scl/fi/8zzljfyzlbp4uu07nd3pk/tcpdump_log.xlsx?rlkey=3k22nosqhxf3u7z95wpohu96u&st=6xqi6lfj&dl=0">here</a>
 - 2. Analyzed network log data to identify suspicious traffic patterns.
 - 3. Examined TCP traffic and observed a high volume of SYN packets from a single source IP address (203.0.113.0).
 - 4. Verified that the traffic targeted a single destination server (192.0.2.1) within a very short time frame.
